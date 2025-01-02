@@ -40,14 +40,15 @@ func main() {
 	}
 
 	customer := &isbasi.Firm{
-		Name:            "Test Company",
-		TaxOrPersonalId: "1234567890",
-		TaxOffice:       "Test Tax Office",
-		Country:         "Turkey",
-		City:            "Istanbul",
-		District:        "Kadikoy",
-		Address:         "Test Address",
-		FirmType:        1, // 1: Customer, 2: Supplier, 3: Both
+		Name:       "Test",
+		TcknVkn:    "1234567890",
+		IsPersonal: true, // Bireysel / Kurumsal
+		TaxOffice:  "Vergi dairesi",
+		Country:    "Türkiye",
+		City:       "İstanbul",
+		District:   "Kadıkoy",
+		Address:    "Adres",
+		FirmType:   1, // 1: Müşteri, 2: Tedarikçi, 3: Her ikisi de
 	}
 
 	if res, err := api.CreateFirm(ctx, customer); err == nil {
@@ -57,7 +58,6 @@ func main() {
 		fmt.Println(err)
 	}
 }
-
 ```
 
 # Creating an Invoice
@@ -92,18 +92,17 @@ func main() {
 	invoice := &isbasi.Invoice{
 		Customer: &isbasi.Customer{
 			Code:      "CUST001",
-			Name:      "Test Customer",
+			Name:      "Test",
 			TcknVkn:   "1234567890",
-			TaxOffice: "Test Tax Office",
-			Country:   "Turkey",
-			City:      "Istanbul",
-			District:  "Kadikoy",
-			Address:   "Test Address",
+			TaxOffice: "Vergi dairesi",
+			Country:   "Türkiye",
+			City:      "İstanbul",
+			District:  "Kadıkoy",
+			Address:   "Adres",
 		},
 		InvoiceDate:  "2025-01-02",
 		Currency:     "TRY",
-		ExchangeRate: 1,
-		Description:  "Test Invoice",
+		Description:  "Fatura açıklaması",
 		VatIncluded:  true, // KDV dahil
 	}
 
@@ -111,11 +110,11 @@ func main() {
 		Quantity:    1,
 		TaxRate:     20,
 		Price:       100,
-		Description: "Test Product",
+		Description: "Test",
 		ProductDetail: &isbasi.ProductDetail{
 			ItemCode: "PROD001",
 			ItemType: 1,
-			Name:     "Test Product",
+			Name:     "Test",
 			Vat:      20,
 		},
 	}
