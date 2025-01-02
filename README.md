@@ -104,6 +104,7 @@ func main() {
 		Currency:     "TRY",
 		ExchangeRate: 1,
 		Description:  "Test Invoice",
+		VatIncluded:  true, // KDV dahil
 	}
 
 	salesInvoice := &isbasi.SalesInvoiceDetail{
