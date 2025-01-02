@@ -21,7 +21,7 @@ type API struct {
 	Language  string
 }
 
-type LoginRequest struct {
+type Login struct {
 	Username    string `json:"username,omitempty"`
 	Password    string `json:"password,omitempty"`
 	UserKey     string `json:"appUserKey,omitempty"`
@@ -31,10 +31,10 @@ type LoginRequest struct {
 }
 
 type LoginResponse struct {
-	Code    int           `json:"code,omitempty"`
-	Message string        `json:"message,omitempty"`
-	IsError bool          `json:"isError,omitempty"`
-	Data    *LoginRequest `json:"data,omitempty"`
+	Code    int    `json:"code,omitempty"`
+	Message string `json:"message,omitempty"`
+	IsError bool   `json:"isError,omitempty"`
+	Data    *Login `json:"data,omitempty"`
 }
 
 type Customer struct {
@@ -217,7 +217,7 @@ type EPortalLogin struct {
 	Password string `json:"password,omitempty"`
 }
 
-type FirmRequest struct {
+type Firm struct {
 	Id                         int                `json:"id,omitempty"`
 	Code                       string             `json:"code,omitempty"`
 	IsActive                   bool               `json:"isActive,omitempty"`
@@ -300,7 +300,7 @@ type FirmRequest struct {
 	EAPortalLoginInformation   *EPortalLogin      `json:"eAPortalLoginInformation,omitempty"`
 }
 
-type InvoiceRequest struct {
+type Invoice struct {
 	InvoiceId                int                    `json:"invoiceId,omitempty"`
 	Customer                 *Customer              `json:"customer,omitempty"`
 	InvoiceDate              string                 `json:"invoiceDate,omitempty"`
@@ -318,7 +318,7 @@ type InvoiceRequest struct {
 	SalesInvoiceDetails      []*SalesInvoiceDetail  `json:"salesInvoiceDetails,omitempty"`
 }
 
-type ProductRequest struct {
+type Product struct {
 	Id               int            `json:"id,omitempty"`
 	IsActive         bool           `json:"isActive,omitempty"`
 	Name             string         `json:"name,omitempty"`
@@ -344,24 +344,24 @@ type ProductRequest struct {
 }
 
 type FirmResponse struct {
-	Code    int          `json:"code,omitempty"`
-	Message string       `json:"message,omitempty"`
-	IsError bool         `json:"isError,omitempty"`
-	Data    *FirmRequest `json:"data,omitempty"`
+	Code    int    `json:"code,omitempty"`
+	Message string `json:"message,omitempty"`
+	IsError bool   `json:"isError,omitempty"`
+	Data    *Firm  `json:"data,omitempty"`
 }
 
 type InvoiceResponse struct {
-	Code    int             `json:"code,omitempty"`
-	Message string          `json:"message,omitempty"`
-	IsError bool            `json:"isError,omitempty"`
-	Data    *InvoiceRequest `json:"data,omitempty"`
+	Code    int      `json:"code,omitempty"`
+	Message string   `json:"message,omitempty"`
+	IsError bool     `json:"isError,omitempty"`
+	Data    *Invoice `json:"data,omitempty"`
 }
 
 type ProductResponse struct {
-	Code    int             `json:"code,omitempty"`
-	Message string          `json:"message,omitempty"`
-	IsError bool            `json:"isError,omitempty"`
-	Data    *ProductRequest `json:"data,omitempty"`
+	Code    int      `json:"code,omitempty"`
+	Message string   `json:"message,omitempty"`
+	IsError bool     `json:"isError,omitempty"`
+	Data    *Product `json:"data,omitempty"`
 }
 
 func Api(secretKey string) *API {
@@ -403,7 +403,7 @@ func (api *API) NewRequest(ctx context.Context, method, path string, body interf
 	return res, nil
 }
 
-func (api *API) Login(ctx context.Context, body *LoginRequest) (result LoginResponse, err error) {
+func (api *API) Login(ctx context.Context, body *Login) (result LoginResponse, err error) {
 	payload, err := json.Marshal(body)
 	if err != nil {
 		return result, fmt.Errorf("failed to marshal login request: %v", err)
@@ -434,7 +434,7 @@ func (api *API) Login(ctx context.Context, body *LoginRequest) (result LoginResp
 	return result, nil
 }
 
-func (api *API) CreateFirm(ctx context.Context, req *FirmRequest) (result FirmResponse, err error) {
+func (api *API) CreateFirm(ctx context.Context, req *Firm) (result FirmResponse, err error) {
 	res, err := api.NewRequest(ctx, "PUT", "/firms", req)
 	if err != nil {
 		return result, err
@@ -449,7 +449,7 @@ func (api *API) CreateFirm(ctx context.Context, req *FirmRequest) (result FirmRe
 	return result, nil
 }
 
-func (api *API) CreateInvoice(ctx context.Context, req *InvoiceRequest) (result InvoiceResponse, err error) {
+func (api *API) CreateInvoice(ctx context.Context, req *Invoice) (result InvoiceResponse, err error) {
 	res, err := api.NewRequest(ctx, "POST", "/invoices/integrationInvoices", req)
 	if err != nil {
 		return result, err
