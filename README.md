@@ -10,7 +10,7 @@ Logo İşbaşı API
 go get github.com/ozgur-yalcin/isbasi.go
 ```
 
-# Creating a Customer
+# Müşteri oluştur
 
 ```go
 package main
@@ -59,7 +59,7 @@ func main() {
 }
 ```
 
-# Creating an Invoice
+# Fatura oluştur
 
 ```go
 package main
