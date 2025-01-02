@@ -43,6 +43,76 @@ type Category struct {
 	Type int    `json:"type,omitempty"`
 }
 
+type Unit struct {
+	Name              string  `json:"name,omitempty"`
+	ConversionFactor1 float64 `json:"conversionFactor1,omitempty"`
+	ConversionFactor2 float64 `json:"conversionFactor2,omitempty"`
+	IsMain            bool    `json:"isMain,omitempty"`
+	Barcode           string  `json:"barcode,omitempty"`
+	BarcodeID         int     `json:"barcodeId,omitempty"`
+	Code              string  `json:"code,omitempty"`
+	UniversalUnitCode string  `json:"universalUnitCode,omitempty"`
+	UnitSetCode       string  `json:"unitSetCode,omitempty"`
+	LogicalRef        int     `json:"logicalRef,omitempty"`
+	SVRRef            int     `json:"svrref,omitempty"`
+	LineNr            int     `json:"lineNr,omitempty"`
+	UnitLineRef       int     `json:"unitLineRef,omitempty"`
+	Priority          int     `json:"priority,omitempty"`
+}
+
+type UnitSet struct {
+	ID   int    `json:"id,omitempty"`
+	Name string `json:"name,omitempty"`
+	Code string `json:"code,omitempty"`
+}
+
+type Price struct {
+	PriceID          int     `json:"priceid,omitempty"`
+	Price            float64 `json:"price,omitempty"`
+	PriceTaxIncluded float64 `json:"priceTaxIncluded,omitempty"`
+	PriceTaxExcluded float64 `json:"priceTaxExcluded,omitempty"`
+	VatIncluded      bool    `json:"vatIncluded,omitempty"`
+	Currency         string  `json:"currency,omitempty"`
+	Code             string  `json:"code,omitempty"`
+	Unit             string  `json:"unit,omitempty"`
+	Type             int     `json:"type,omitempty"`
+	Description      string  `json:"description,omitempty"`
+	Message          string  `json:"message,omitempty"`
+	ExchangeRate     float64 `json:"exchangeRate,omitempty"`
+}
+
+type AdditionalTax struct {
+	AdditionalTaxID     int     `json:"additionalTaxId,omitempty"`
+	Code                string  `json:"code,omitempty"`
+	Name                string  `json:"name,omitempty"`
+	Type                string  `json:"type,omitempty"`
+	Value               float64 `json:"value,omitempty"`
+	UniversalCode       string  `json:"universalCode,omitempty"`
+	UniversalDesc       string  `json:"universalDesc,omitempty"`
+	Unit                string  `json:"unit,omitempty"`
+	AdditionalTaxLineID int     `json:"AdditionalTaxLineId,omitempty"`
+}
+
+type Withholding struct {
+	ID          int     `json:"id,omitempty"`
+	Code        string  `json:"code,omitempty"`
+	Description string  `json:"description,omitempty"`
+	RateText    string  `json:"rateText,omitempty"`
+	Rate        float64 `json:"rate,omitempty"`
+}
+
+type Image struct {
+	ID               int    `json:"id,omitempty"`
+	Image            string `json:"image,omitempty"`
+	IsImageSaveAsZip bool   `json:"isImageSaveAsZip,omitempty"`
+}
+
+type Brand struct {
+	ID   int    `json:"id,omitempty"`
+	Name string `json:"name,omitempty"`
+	Code string `json:"code,omitempty"`
+}
+
 type Employee struct {
 	FullName string `json:"fullName,omitempty"`
 	Email    string `json:"email,omitempty"`
@@ -185,12 +255,28 @@ type InvoiceRequest struct {
 }
 
 type ProductRequest struct {
-	ID       int     `json:"id,omitempty"`
-	Code     string  `json:"code,omitempty"`
-	Name     string  `json:"name,omitempty"`
-	Type     int     `json:"type,omitempty"`
-	VatRate  float64 `json:"vatRate,omitempty"`
-	IsActive bool    `json:"isActive,omitempty"`
+	ID               int           `json:"id,omitempty"`
+	IsActive         bool          `json:"isActive,omitempty"`
+	Name             string        `json:"name,omitempty"`
+	Name2            string        `json:"name2,omitempty"`
+	IsReceiptProduct string        `json:"isReceiptProduct,omitempty"`
+	Code             string        `json:"code,omitempty"`
+	Type             int           `json:"type,omitempty"`
+	Tags             []string      `json:"tags,omitempty"`
+	Category         Category      `json:"category,omitempty"`
+	Units            []Unit        `json:"units,omitempty"`
+	UnitSet          UnitSet       `json:"unitSet,omitempty"`
+	MainUnit         Unit          `json:"mainUnit,omitempty"`
+	VatRate          float64       `json:"vatRate,omitempty"`
+	Prices           []Price       `json:"prices,omitempty"`
+	AdditionalTax    AdditionalTax `json:"additionalTax,omitempty"`
+	Withholding      Withholding   `json:"withholding,omitempty"`
+	Images           []Image       `json:"images,omitempty"`
+	ServiceGroupID   int           `json:"serviceGroupId,omitempty"`
+	ServiceGroupCode string        `json:"serviceGroupCode,omitempty"`
+	ServiceGroupName string        `json:"serviceGroupName,omitempty"`
+	ErrorMessage     string        `json:"errorMessage,omitempty"`
+	Brand            Brand         `json:"brand,omitempty"`
 }
 
 type FirmResponse struct {
