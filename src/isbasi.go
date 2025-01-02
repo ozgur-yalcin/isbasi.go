@@ -463,8 +463,8 @@ func (api *API) CreateInvoice(ctx context.Context, req *InvoiceRequest) (result 
 	return result, nil
 }
 
-func (api *API) GetFirm(ctx context.Context, id int) (result FirmResponse, err error) {
-	res, err := api.NewRequest(ctx, "GET", fmt.Sprintf("/firms/%d", id), nil)
+func (api *API) GetFirm(ctx context.Context, firmId int) (result FirmResponse, err error) {
+	res, err := api.NewRequest(ctx, "GET", fmt.Sprintf("/firms/%d", firmId), nil)
 	if err != nil {
 		return result, err
 	}
@@ -478,8 +478,8 @@ func (api *API) GetFirm(ctx context.Context, id int) (result FirmResponse, err e
 	return result, nil
 }
 
-func (api *API) GetProduct(ctx context.Context, id, productType int) (result ProductResponse, err error) {
-	res, err := api.NewRequest(ctx, "GET", fmt.Sprintf("/products/%d/%d", id, productType), nil)
+func (api *API) GetProduct(ctx context.Context, productId, productType int) (result ProductResponse, err error) {
+	res, err := api.NewRequest(ctx, "GET", fmt.Sprintf("/products/%d/%d", productId, productType), nil)
 	if err != nil {
 		return result, err
 	}
