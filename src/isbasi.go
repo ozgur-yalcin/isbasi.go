@@ -31,10 +31,10 @@ type LoginRequest struct {
 }
 
 type LoginResponse struct {
-	Code    int          `json:"code,omitempty"`
-	Message string       `json:"message,omitempty"`
-	IsError bool         `json:"isError,omitempty"`
-	Data    LoginRequest `json:"data,omitempty"`
+	Code    int           `json:"code,omitempty"`
+	Message string        `json:"message,omitempty"`
+	IsError bool          `json:"isError,omitempty"`
+	Data    *LoginRequest `json:"data,omitempty"`
 }
 
 type Customer struct {
@@ -76,25 +76,25 @@ type EArchivePortalInvoice struct {
 }
 
 type ProductDetail struct {
-	ItemCode    string      `json:"itemCode,omitempty"`
-	ItemType    int         `json:"itemType,omitempty"`
-	Name        string      `json:"name,omitempty"`
-	Vat         float64     `json:"vat,omitempty"`
-	Unit        string      `json:"unit,omitempty"`
-	Withholding Withholding `json:"withholding,omitempty"`
+	ItemCode    string       `json:"itemCode,omitempty"`
+	ItemType    int          `json:"itemType,omitempty"`
+	Name        string       `json:"name,omitempty"`
+	Vat         float64      `json:"vat,omitempty"`
+	Unit        string       `json:"unit,omitempty"`
+	Withholding *Withholding `json:"withholding,omitempty"`
 }
 
 type SalesInvoiceDetail struct {
-	Quantity         float64       `json:"quantity,omitempty"`
-	TaxRate          float64       `json:"taxRate,omitempty"`
-	Name             string        `json:"name,omitempty"`
-	Price            float64       `json:"price,omitempty"`
-	DiscountRate     float64       `json:"discountRate,omitempty"`
-	DiscountValue    float64       `json:"discountValue,omitempty"`
-	StoppageRate     float64       `json:"stoppageRate,omitempty"`
-	VatExemptionCode string        `json:"vatExemptionCode,omitempty"`
-	Description      string        `json:"description,omitempty"`
-	ProductDetail    ProductDetail `json:"productDetail,omitempty"`
+	Quantity         float64        `json:"quantity,omitempty"`
+	TaxRate          float64        `json:"taxRate,omitempty"`
+	Name             string         `json:"name,omitempty"`
+	Price            float64        `json:"price,omitempty"`
+	DiscountRate     float64        `json:"discountRate,omitempty"`
+	DiscountValue    float64        `json:"discountValue,omitempty"`
+	StoppageRate     float64        `json:"stoppageRate,omitempty"`
+	VatExemptionCode string         `json:"vatExemptionCode,omitempty"`
+	Description      string         `json:"description,omitempty"`
+	ProductDetail    *ProductDetail `json:"productDetail,omitempty"`
 }
 
 type Category struct {
