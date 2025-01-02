@@ -26,6 +26,7 @@ import (
 
 func main() {
 	api := isbasi.Api("your-api-key")
+	api.SetLanguage("tr-TR")
 
 	login := &isbasi.Login{
 		Username: "your-username",
@@ -75,6 +76,7 @@ import (
 
 func main() {
 	api := isbasi.Api("your-api-key")
+	api.SetLanguage("tr-TR")
 
 	login := &isbasi.Login{
 		Username: "your-username",
