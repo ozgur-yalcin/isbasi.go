@@ -38,18 +38,18 @@ type LoginResponse struct {
 }
 
 type Customer struct {
-	Code      string `json:"code,omitempty"`
-	Name      string `json:"name,omitempty"`
-	Email     string `json:"email,omitempty"`
-	TcknVkn   string `json:"tcknVkn,omitempty"`
-	TaxOffice string `json:"taxOffice,omitempty"`
-	Country   string `json:"country,omitempty"`
-	City      string `json:"city,omitempty"`
-	District  string `json:"district,omitempty"`
-	Address   string `json:"address,omitempty"`
-	IsPerson  bool   `json:"isPerson,omitempty"`
-	FirstName string `json:"firstName,omitempty"`
-	LastName  string `json:"lastName,omitempty"`
+	Code       string `json:"code,omitempty"`
+	Name       string `json:"name,omitempty"`
+	Email      string `json:"email,omitempty"`
+	TcknVkn    string `json:"tcknVkn,omitempty"`
+	TaxOffice  string `json:"taxOffice,omitempty"`
+	Country    string `json:"country,omitempty"`
+	City       string `json:"city,omitempty"`
+	District   string `json:"district,omitempty"`
+	Address    string `json:"address,omitempty"`
+	IsPersonal bool   `json:"isPerson,omitempty"`
+	FirstName  string `json:"firstName,omitempty"`
+	LastName   string `json:"lastName,omitempty"`
 }
 
 type ShipmentAgent struct {
