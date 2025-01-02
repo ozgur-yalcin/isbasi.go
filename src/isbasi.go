@@ -25,7 +25,7 @@ type LoginRequest struct {
 	Username    string `json:"username,omitempty"`
 	Password    string `json:"password,omitempty"`
 	AccessToken string `json:"accessToken,omitempty"`
-	TenantID    string `json:"tenantId,omitempty"`
+	TenantId    string `json:"tenantId,omitempty"`
 	BaseUrl     string `json:"baseUrl,omitempty"`
 }
 
@@ -97,7 +97,7 @@ type SalesInvoiceDetail struct {
 }
 
 type Category struct {
-	ID   int    `json:"id,omitempty"`
+	Id   int    `json:"id,omitempty"`
 	Name string `json:"name,omitempty"`
 	Code string `json:"code,omitempty"`
 	Type int    `json:"type,omitempty"`
@@ -109,7 +109,7 @@ type Unit struct {
 	ConversionFactor2 float64 `json:"conversionFactor2,omitempty"`
 	IsMain            bool    `json:"isMain,omitempty"`
 	Barcode           string  `json:"barcode,omitempty"`
-	BarcodeID         int     `json:"barcodeId,omitempty"`
+	BarcodeId         int     `json:"barcodeId,omitempty"`
 	Code              string  `json:"code,omitempty"`
 	UniversalUnitCode string  `json:"universalUnitCode,omitempty"`
 	UnitSetCode       string  `json:"unitSetCode,omitempty"`
@@ -121,13 +121,13 @@ type Unit struct {
 }
 
 type UnitSet struct {
-	ID   int    `json:"id,omitempty"`
+	Id   int    `json:"id,omitempty"`
 	Name string `json:"name,omitempty"`
 	Code string `json:"code,omitempty"`
 }
 
 type Price struct {
-	PriceID          int     `json:"priceid,omitempty"`
+	PriceId          int     `json:"priceid,omitempty"`
 	Price            float64 `json:"price,omitempty"`
 	PriceTaxIncluded float64 `json:"priceTaxIncluded,omitempty"`
 	PriceTaxExcluded float64 `json:"priceTaxExcluded,omitempty"`
@@ -142,7 +142,7 @@ type Price struct {
 }
 
 type AdditionalTax struct {
-	AdditionalTaxID     int     `json:"additionalTaxId,omitempty"`
+	AdditionalTaxId     int     `json:"additionalTaxId,omitempty"`
 	Code                string  `json:"code,omitempty"`
 	Name                string  `json:"name,omitempty"`
 	Type                string  `json:"type,omitempty"`
@@ -150,11 +150,11 @@ type AdditionalTax struct {
 	UniversalCode       string  `json:"universalCode,omitempty"`
 	UniversalDesc       string  `json:"universalDesc,omitempty"`
 	Unit                string  `json:"unit,omitempty"`
-	AdditionalTaxLineID int     `json:"AdditionalTaxLineId,omitempty"`
+	AdditionalTaxLineId int     `json:"AdditionalTaxLineId,omitempty"`
 }
 
 type Withholding struct {
-	ID          int     `json:"id,omitempty"`
+	Id          int     `json:"id,omitempty"`
 	Code        string  `json:"code,omitempty"`
 	Description string  `json:"description,omitempty"`
 	RateText    string  `json:"rateText,omitempty"`
@@ -162,13 +162,13 @@ type Withholding struct {
 }
 
 type Image struct {
-	ID               int    `json:"id,omitempty"`
+	Id               int    `json:"id,omitempty"`
 	Image            string `json:"image,omitempty"`
 	IsImageSaveAsZip bool   `json:"isImageSaveAsZip,omitempty"`
 }
 
 type Brand struct {
-	ID   int    `json:"id,omitempty"`
+	Id   int    `json:"id,omitempty"`
 	Name string `json:"name,omitempty"`
 	Code string `json:"code,omitempty"`
 }
@@ -179,8 +179,8 @@ type Employee struct {
 }
 
 type ShippingAddress struct {
-	ID       int    `json:"id,omitempty"`
-	FirmID   int    `json:"firmid,omitempty"`
+	Id       int    `json:"id,omitempty"`
+	FirmId   int    `json:"firmid,omitempty"`
 	Title    string `json:"title,omitempty"`
 	Address  string `json:"address,omitempty"`
 	Country  string `json:"country,omitempty"`
@@ -201,8 +201,8 @@ type Bank struct {
 }
 
 type BankAccount struct {
-	BankID      int    `json:"bankId,omitempty"`
-	AccountID   int    `json:"accountId,omitempty"`
+	BankId      int    `json:"bankId,omitempty"`
+	AccountId   int    `json:"accountId,omitempty"`
 	AccountCode string `json:"accountCode,omitempty"`
 	Name        string `json:"name,omitempty"`
 	IBAN        string `json:"iban,omitempty"`
@@ -212,12 +212,12 @@ type BankAccount struct {
 }
 
 type EPortalLogin struct {
-	UserID   string `json:"userId,omitempty"`
+	UserId   string `json:"userId,omitempty"`
 	Password string `json:"password,omitempty"`
 }
 
 type FirmRequest struct {
-	ID                         int               `json:"id,omitempty"`
+	Id                         int               `json:"id,omitempty"`
 	Code                       string            `json:"code,omitempty"`
 	IsActive                   bool              `json:"isActive,omitempty"`
 	IsPersonalCompany          bool              `json:"isPersonalCompany,omitempty"`
@@ -226,7 +226,7 @@ type FirmRequest struct {
 	LastName                   string            `json:"lastName,omitempty"`
 	FullName                   string            `json:"fullName,omitempty"`
 	DisplayName                string            `json:"displayName,omitempty"`
-	TaxOrPersonalID            string            `json:"taxOrPersonalId,omitempty"`
+	TaxOrPersonalId            string            `json:"taxOrPersonalId,omitempty"`
 	TaxOffice                  string            `json:"taxOffice,omitempty"`
 	Country                    string            `json:"country,omitempty"`
 	City                       string            `json:"city,omitempty"`
@@ -245,7 +245,7 @@ type FirmRequest struct {
 	Banks                      []Bank            `json:"banks,omitempty"`
 	FaxNumber                  string            `json:"faxNumber,omitempty"`
 	Icon                       string            `json:"icon,omitempty"`
-	UserID                     string            `json:"UserId,omitempty"`
+	UserId                     string            `json:"UserId,omitempty"`
 	EInvoiceResponsible        bool              `json:"eInvoiceResponsible,omitempty"`
 	DefaultReportTemplate      string            `json:"defaultReportTemplate,omitempty"`
 	FirmType                   int               `json:"firmType,omitempty"`
@@ -282,13 +282,13 @@ type FirmRequest struct {
 	BeginningBalanceDate       time.Time         `json:"beginningBalanceDate,omitempty"`
 	Balance                    float64           `json:"balance,omitempty"`
 	CurrencyBalance            float64           `json:"currencyBalance,omitempty"`
-	CostMethodID               int               `json:"costMethodId,omitempty"`
+	CostMethodId               int               `json:"costMethodId,omitempty"`
 	Currency                   string            `json:"currency,omitempty"`
 	Description                string            `json:"description,omitempty"`
 	EInvoiceBeginDate          time.Time         `json:"eInvoiceBeginDate,omitempty"`
 	EArchiveBeginDate          time.Time         `json:"eArchiveBeginDate,omitempty"`
 	IsSendDispatchInEInvoice   bool              `json:"isSendDispatchInEInvoice,omitempty"`
-	SenderIbanBankAccountID    int               `json:"senderIbanBankAccountId,omitempty"`
+	SenderIbanBankAccountId    int               `json:"senderIbanBankAccountId,omitempty"`
 	ReceiptReadingMethod       int               `json:"purchaseServicesReceiptReadingMethod,omitempty"`
 	WasAccessPermissionGranted bool              `json:"wasAccessPermissionGranted,omitempty"`
 	BankAccount                BankAccount       `json:"bankAccount,omitempty"`
@@ -300,7 +300,7 @@ type FirmRequest struct {
 }
 
 type InvoiceRequest struct {
-	InvoiceID                int                   `json:"invoiceId,omitempty"`
+	InvoiceId                int                   `json:"invoiceId,omitempty"`
 	Customer                 Customer              `json:"customer,omitempty"`
 	InvoiceDate              string                `json:"invoiceDate,omitempty"`
 	Currency                 string                `json:"currency,omitempty"`
@@ -318,7 +318,7 @@ type InvoiceRequest struct {
 }
 
 type ProductRequest struct {
-	ID               int           `json:"id,omitempty"`
+	Id               int           `json:"id,omitempty"`
 	IsActive         bool          `json:"isActive,omitempty"`
 	Name             string        `json:"name,omitempty"`
 	Name2            string        `json:"name2,omitempty"`
@@ -335,7 +335,7 @@ type ProductRequest struct {
 	AdditionalTax    AdditionalTax `json:"additionalTax,omitempty"`
 	Withholding      Withholding   `json:"withholding,omitempty"`
 	Images           []Image       `json:"images,omitempty"`
-	ServiceGroupID   int           `json:"serviceGroupId,omitempty"`
+	ServiceGroupId   int           `json:"serviceGroupId,omitempty"`
 	ServiceGroupCode string        `json:"serviceGroupCode,omitempty"`
 	ServiceGroupName string        `json:"serviceGroupName,omitempty"`
 	ErrorMessage     string        `json:"errorMessage,omitempty"`
@@ -426,7 +426,7 @@ func (api *API) Login(ctx context.Context, body *LoginRequest) (result LoginResp
 		return result, fmt.Errorf("login failed: %s", result.Message)
 	}
 	api.AuthToken = result.Data.AccessToken
-	api.TenantId = result.Data.TenantID
+	api.TenantId = result.Data.TenantId
 	if result.Data.BaseUrl != "" {
 		api.BaseUrl = result.Data.BaseUrl
 	}
