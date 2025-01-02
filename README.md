@@ -4,13 +4,13 @@
 # isbasi.go
 Logo İşbaşı API
 
-## Installation
+# Installation
 
 ```bash
 go get github.com/ozgur-yalcin/isbasi.go
 ```
 
-### Creating a Customer
+# Creating a Customer
 
 ```go
 package main
@@ -59,7 +59,7 @@ func main() {
 
 ```
 
-### Creating an Invoice
+# Creating an Invoice
 
 ```go
 package main
