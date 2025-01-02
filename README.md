@@ -17,7 +17,7 @@ go get github.com/ozgur-yalcin/isbasi.go
 ```go
 api := isbasi.Api("your-api-key")
 
-login := &isbasi.LoginRequest{
+login := &isbasi.Login{
     Username: "your-username",
     Password: "your-password",
 }
@@ -32,7 +32,7 @@ if err != nil {
 ### Creating a Customer
 
 ```go
-customer := &isbasi.FirmRequest{
+customer := &isbasi.Firm{
     Name: "Test Company",
     TaxOrPersonalID: "1234567890",
     TaxOffice: "Test Tax Office",
@@ -52,7 +52,7 @@ if err != nil {
 ### Creating an Invoice
 
 ```go
-invoice := &isbasi.InvoiceRequest{
+invoice := &isbasi.Invoice{
     Customer: &isbasi.Customer{
         Code: "CUST001",
         Name: "Test Customer",
