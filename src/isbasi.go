@@ -157,7 +157,7 @@ func (api *API) Login(ctx context.Context, login *LoginRequest) (result LoginRes
 	}
 	defer res.Body.Close()
 	if err := json.NewDecoder(res.Body).Decode(&result); err != nil {
-		return result, fmt.Errorf("failed to decode login resonse: %v", err)
+		return result, fmt.Errorf("failed to decode login response: %v", err)
 	}
 	if result.IsError {
 		return result, fmt.Errorf("login failed: %s", result.Message)
@@ -177,7 +177,7 @@ func (api *API) CreateFirm(ctx context.Context, firm *FirmRequest) (result FirmR
 	}
 	defer res.Body.Close()
 	if err := json.NewDecoder(res.Body).Decode(&result); err != nil {
-		return result, fmt.Errorf("failed to decode resonse: %v", err)
+		return result, fmt.Errorf("failed to decode response: %v", err)
 	}
 	if result.IsError {
 		return result, fmt.Errorf("API error: %s", result.Message)
@@ -192,7 +192,7 @@ func (api *API) CreateInvoice(ctx context.Context, invoice *InvoiceRequest) (res
 	}
 	defer res.Body.Close()
 	if err := json.NewDecoder(res.Body).Decode(&result); err != nil {
-		return result, fmt.Errorf("failed to decode resonse: %v", err)
+		return result, fmt.Errorf("failed to decode response: %v", err)
 	}
 	if result.IsError {
 		return result, fmt.Errorf("API error: %s", result.Message)
@@ -207,7 +207,7 @@ func (api *API) GetFirm(ctx context.Context, id int) (result FirmResponse, err e
 	}
 	defer res.Body.Close()
 	if err := json.NewDecoder(res.Body).Decode(&result); err != nil {
-		return result, fmt.Errorf("failed to decode resonse: %v", err)
+		return result, fmt.Errorf("failed to decode response: %v", err)
 	}
 	if result.IsError {
 		return result, fmt.Errorf("API error: %s", result.Message)
@@ -222,7 +222,7 @@ func (api *API) GetProduct(ctx context.Context, id, productType int) (result Pro
 	}
 	defer res.Body.Close()
 	if err := json.NewDecoder(res.Body).Decode(&result); err != nil {
-		return result, fmt.Errorf("failed to decode resonse: %v", err)
+		return result, fmt.Errorf("failed to decode response: %v", err)
 	}
 	if result.IsError {
 		return result, fmt.Errorf("API error: %s", result.Message)
