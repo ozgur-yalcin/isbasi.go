@@ -221,13 +221,13 @@ type Firm struct {
 	Id                         int                `json:"id,omitempty"`
 	Code                       string             `json:"code,omitempty"`
 	IsActive                   bool               `json:"isActive,omitempty"`
-	IsPersonalCompany          bool               `json:"isPersonalCompany,omitempty"`
+	IsPersonal                 bool               `json:"isPersonalCompany,omitempty"`
 	Name                       string             `json:"name,omitempty"`
 	FirstName                  string             `json:"firstName,omitempty"`
 	LastName                   string             `json:"lastName,omitempty"`
 	FullName                   string             `json:"fullName,omitempty"`
 	DisplayName                string             `json:"displayName,omitempty"`
-	TaxOrPersonalId            string             `json:"taxOrPersonalId,omitempty"`
+	TcknVkn                    string             `json:"taxOrPersonalId,omitempty"`
 	TaxOffice                  string             `json:"taxOffice,omitempty"`
 	Country                    string             `json:"country,omitempty"`
 	City                       string             `json:"city,omitempty"`
