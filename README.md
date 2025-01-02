@@ -48,7 +48,6 @@ func main() {
 		City:       "İstanbul",
 		District:   "Kadıkoy",
 		Address:    "Adres",
-		FirmType:   1, // 1: Müşteri, 2: Tedarikçi, 3: Her ikisi de
 	}
 
 	if res, err := api.CreateFirm(ctx, customer); err == nil {
@@ -94,6 +93,7 @@ func main() {
 			Code:      "CUST001",
 			Name:      "Test",
 			TcknVkn:   "1234567890",
+			IsPersonal: true, // Bireysel / Kurumsal
 			TaxOffice: "Vergi dairesi",
 			Country:   "Türkiye",
 			City:      "İstanbul",
