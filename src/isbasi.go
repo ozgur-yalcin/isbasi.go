@@ -464,6 +464,21 @@ func (api *API) CreateInvoice(ctx context.Context, req *Invoice) (result Invoice
 	return result, nil
 }
 
+func (api *API) CreateProduct(ctx context.Context, req *Product) (result ProductResponse, err error) {
+	res, err := api.NewRequest(ctx, "PUT", "/products", req)
+	if err != nil {
+		return result, err
+	}
+	defer res.Body.Close()
+	if err := json.NewDecoder(res.Body).Decode(&result); err != nil {
+		return result, fmt.Errorf("failed to decode response: %v", err)
+	}
+	if result.IsError {
+		return result, fmt.Errorf("API error: %s", result.Message)
+	}
+	return result, nil
+}
+
 func (api *API) GetFirm(ctx context.Context, firmId int) (result FirmResponse, err error) {
 	res, err := api.NewRequest(ctx, "GET", fmt.Sprintf("/firms/%d", firmId), nil)
 	if err != nil {
