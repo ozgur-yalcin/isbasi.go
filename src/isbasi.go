@@ -139,8 +139,8 @@ func (api *API) NewRequest(ctx context.Context, method, path string, body interf
 	return res, nil
 }
 
-func (api *API) Login(ctx context.Context, login *LoginRequest) (result LoginResponse, err error) {
-	payload, err := json.Marshal(login)
+func (api *API) Login(ctx context.Context, body *LoginRequest) (result LoginResponse, err error) {
+	payload, err := json.Marshal(body)
 	if err != nil {
 		return result, fmt.Errorf("failed to marshal login request: %v", err)
 	}
@@ -170,8 +170,8 @@ func (api *API) Login(ctx context.Context, login *LoginRequest) (result LoginRes
 	return result, nil
 }
 
-func (api *API) CreateFirm(ctx context.Context, firm *FirmRequest) (result FirmResponse, err error) {
-	res, err := api.NewRequest(ctx, "PUT", "/firms", firm)
+func (api *API) CreateFirm(ctx context.Context, req *FirmRequest) (result FirmResponse, err error) {
+	res, err := api.NewRequest(ctx, "PUT", "/firms", req)
 	if err != nil {
 		return result, err
 	}
@@ -185,8 +185,8 @@ func (api *API) CreateFirm(ctx context.Context, firm *FirmRequest) (result FirmR
 	return result, nil
 }
 
-func (api *API) CreateInvoice(ctx context.Context, invoice *InvoiceRequest) (result InvoiceResponse, err error) {
-	res, err := api.NewRequest(ctx, "POST", "/invoices/integrationInvoices", invoice)
+func (api *API) CreateInvoice(ctx context.Context, req *InvoiceRequest) (result InvoiceResponse, err error) {
+	res, err := api.NewRequest(ctx, "POST", "/invoices/integrationInvoices", req)
 	if err != nil {
 		return result, err
 	}
