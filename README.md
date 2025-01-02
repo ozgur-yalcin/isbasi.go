@@ -89,6 +89,10 @@ func main() {
 	}
 
 	invoice := &isbasi.Invoice{
+		InvoiceDate:  "2025-01-02",
+		Description:  "Fatura açıklaması",
+		Currency:     "TRY",
+		VatIncluded:  true, // KDV dahil
 		Customer: &isbasi.Customer{
 			Code:      "CUST001",
 			Name:      "Test",
@@ -100,10 +104,6 @@ func main() {
 			District:  "Kadıkoy",
 			Address:   "Adres",
 		},
-		InvoiceDate:  "2025-01-02",
-		Currency:     "TRY",
-		Description:  "Fatura açıklaması",
-		VatIncluded:  true, // KDV dahil
 	}
 
 	salesInvoice := &isbasi.SalesInvoiceDetail{
