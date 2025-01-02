@@ -10,81 +10,120 @@ Logo İşbaşı API
 go get github.com/ozgur-yalcin/isbasi.go
 ```
 
-## Getting Started
-
-### Authentication
-
-```go
-api := isbasi.Api("your-api-key")
-
-login := &isbasi.Login{
-    Username: "your-username",
-    Password: "your-password",
-}
-
-ctx := context.Background()
-response, err := api.Login(ctx, login)
-if err != nil {
-    log.Fatal(err)
-}
-```
-
 ### Creating a Customer
 
 ```go
-customer := &isbasi.Firm{
-    Name: "Test Company",
-    TaxOrPersonalID: "1234567890",
-    TaxOffice: "Test Tax Office",
-    Country: "Turkey",
-    City: "Istanbul",
-    District: "Kadikoy",
-    Address: "Test Address",
-    FirmType: 1, // 1: Customer, 2: Supplier, 3: Both
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"log"
+
+	isbasi "github.com/ozgur-yalcin/isbasi.go/src"
+)
+
+func main() {
+	api := isbasi.Api("your-api-key")
+
+	login := &isbasi.Login{
+		Username: "your-username",
+		Password: "your-password",
+	}
+
+	ctx := context.Background()
+	_, err := api.Login(ctx, login)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	customer := &isbasi.Firm{
+		Name:            "Test Company",
+		TaxOrPersonalId: "1234567890",
+		TaxOffice:       "Test Tax Office",
+		Country:         "Turkey",
+		City:            "Istanbul",
+		District:        "Kadikoy",
+		Address:         "Test Address",
+		FirmType:        1, // 1: Customer, 2: Supplier, 3: Both
+	}
+
+	if res, err := api.CreateFirm(ctx, customer); err == nil {
+		pretty, _ := json.MarshalIndent(res, " ", " ")
+		fmt.Println(string(pretty))
+	} else {
+		fmt.Println(err)
+	}
 }
 
-response, err := api.CreateFirm(ctx, customer)
-if err != nil {
-    log.Fatal(err)
-}
 ```
 
 ### Creating an Invoice
 
 ```go
-invoice := &isbasi.Invoice{
-    Customer: &isbasi.Customer{
-        Code: "CUST001",
-        Name: "Test Customer",
-        TcknVkn: "1234567890",
-        TaxOffice: "Test Tax Office",
-        Country: "Turkey",
-        City: "Istanbul",
-        District: "Kadikoy",
-        Address: "Test Address",
-    },
-    InvoiceDate: "2025-01-02",
-    Currency: "TRY",
-    ExchangeRate: 1,
-    Description: "Test Invoice",
-    SalesInvoiceDetails: []*isbasi.SalesInvoiceDetail{
-        {
-            Quantity: 1,
-            TaxRate: 18,
-            Price: 100,
-            Description: "Test Product",
-            ProductDetail: &isbasi.ProductDetail{
-                ItemCode: "PROD001",
-                ItemType: 1,
-                Name: "Test Product",
-                Vat: 18,
-            },
-        },
-    },
-}
+package main
 
-response, err := api.CreateInvoice(ctx, invoice)
-if err != nil {
-    log.Fatal(err)
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"log"
+
+	isbasi "github.com/ozgur-yalcin/isbasi.go/src"
+)
+
+func main() {
+	api := isbasi.Api("your-api-key")
+
+	login := &isbasi.Login{
+		Username: "your-username",
+		Password: "your-password",
+	}
+
+	ctx := context.Background()
+	_, err := api.Login(ctx, login)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	invoice := &isbasi.Invoice{
+		Customer: &isbasi.Customer{
+			Code:      "CUST001",
+			Name:      "Test Customer",
+			TcknVkn:   "1234567890",
+			TaxOffice: "Test Tax Office",
+			Country:   "Turkey",
+			City:      "Istanbul",
+			District:  "Kadikoy",
+			Address:   "Test Address",
+		},
+		InvoiceDate:  "2025-01-02",
+		Currency:     "TRY",
+		ExchangeRate: 1,
+		Description:  "Test Invoice",
+	}
+
+	salesInvoice := &isbasi.SalesInvoiceDetail{
+		Quantity:    1,
+		TaxRate:     20,
+		Price:       100,
+		Description: "Test Product",
+		ProductDetail: &isbasi.ProductDetail{
+			ItemCode: "PROD001",
+			ItemType: 1,
+			Name:     "Test Product",
+			Vat:      20,
+		},
+	}
+
+	invoice.SalesInvoiceDetails = append(invoice.SalesInvoiceDetails, salesInvoice)
+
+	if res, err := api.CreateInvoice(ctx, invoice); err == nil {
+		pretty, _ := json.MarshalIndent(res, " ", " ")
+		fmt.Println(string(pretty))
+	} else {
+		fmt.Println(err)
+	}
 }
 ```
