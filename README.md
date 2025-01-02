@@ -131,3 +131,64 @@ func main() {
 	}
 }
 ```
+
+# Ürün oluştur
+```go
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"log"
+
+	isbasi "github.com/ozgur-yalcin/isbasi.go/src"
+)
+
+func main() {
+	api := isbasi.Api("your-api-key")
+	api.SetLanguage("tr-TR")
+
+	login := &isbasi.Login{
+		Username: "your-username",
+		Password: "your-password",
+	}
+
+	ctx := context.Background()
+	_, err := api.Login(ctx, login)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	unit := &isbasi.Unit{
+		Name:   "Adet",
+		Code:   "ADET",
+		IsMain: true,
+	}
+
+	price := &isbasi.Price{
+		Price:       100.00,
+		VatIncluded: false,
+		Currency:    "TRY",
+		Unit:        "ADET",
+		Type:        1,
+	}
+
+	product := &isbasi.Product{
+		Code:     "PROD001",   // Ürün kodu
+		Name:     "Test Ürün", // Ürün adı
+		Type:     1,           // Ürün tipi (1: Mal, 2: Hizmet)
+		VatRate:  20,          // KDV oranı
+		MainUnit: unit,        // Birim
+		Units:    []*isbasi.Unit{unit},
+		Prices:   []*isbasi.Price{price},
+	}
+
+	if res, err := api.CreateProduct(ctx, product); err == nil {
+		pretty, _ := json.MarshalIndent(res, " ", " ")
+		fmt.Println(string(pretty))
+	} else {
+		fmt.Println(err)
+	}
+}
+```
