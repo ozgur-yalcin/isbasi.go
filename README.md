@@ -89,33 +89,35 @@ func main() {
 	}
 
 	invoice := &isbasi.Invoice{
-		InvoiceDate:  "2025-01-02",
-		Description:  "Fatura açıklaması",
-		Currency:     "TRY",
-		VatIncluded:  true, // KDV dahil
+		InvoiceDate: "2025-01-02", // Fatura tarihi
+		Description: "",           // Fatura açıklaması
+		Currency:    "TRY",        // Para birimi
+		VatIncluded: true,         // KDV dahil
 		Customer: &isbasi.Customer{
-			Code:      "CUST001",
-			Name:      "Test",
-			TcknVkn:   "1234567890",
-			IsPersonal: true, // Bireysel / Kurumsal
-			TaxOffice: "Vergi dairesi",
-			Country:   "Türkiye",
-			City:      "İstanbul",
-			District:  "Kadıkoy",
-			Address:   "Adres",
+			Code:       "CUST001",    // Müşteri kodu
+			Name:       "Test",       // Müşteri adı
+			TcknVkn:    "1234567890", // TCKN / VKN
+			IsPersonal: true,         // Bireysel / Kurumsal
+			TaxOffice:  "Maslak",     // Vergi Dairesi
+			Country:    "Türkiye",    // Ülke
+			City:       "İstanbul",   // Şehir
+			District:   "Kadıkoy",    // İlçe
+			Address:    "No:1",       // Adres
 		},
 	}
 
 	salesInvoice := &isbasi.SalesInvoiceDetail{
-		Quantity:    1,
-		TaxRate:     20,
-		Price:       100,
-		Description: "Test",
+		Quantity:    1,      // Miktar
+		TaxRate:     20,     // KDV Oranı
+		Price:       1.00,   // Fiyat
+		Name:        "Test", // Ürün adı
+		Description: "Test", // Ürün açıklaması
 		ProductDetail: &isbasi.ProductDetail{
-			ItemCode: "PROD001",
-			ItemType: 1,
-			Name:     "Test",
-			Vat:      20,
+			ItemCode: "PROD001", // Ürün kodu
+			ItemType: 1,         // Ürün tipi (1: Mal, 2: Hizmet)
+			Name:     "Test",    // Ürün adı
+			Vat:      20,        // KDV Oranı
+			Unit:     "Adet",    // Birim
 		},
 	}
 
