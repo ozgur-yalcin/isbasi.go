@@ -24,6 +24,7 @@ type API struct {
 type LoginRequest struct {
 	Username    string `json:"username,omitempty"`
 	Password    string `json:"password,omitempty"`
+	UserKey     string `json:"appUserKey,omitempty"`
 	AccessToken string `json:"accessToken,omitempty"`
 	TenantId    string `json:"tenantId,omitempty"`
 	BaseUrl     string `json:"baseUrl,omitempty"`
