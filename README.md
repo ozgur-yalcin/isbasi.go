@@ -40,14 +40,14 @@ func main() {
 	}
 
 	customer := &isbasi.Firm{
-		Name:       "Test",
-		TcknVkn:    "1234567890",
-		IsPersonal: true, // Bireysel / Kurumsal
-		TaxOffice:  "Vergi dairesi",
-		Country:    "Türkiye",
-		City:       "İstanbul",
-		District:   "Kadıkoy",
-		Address:    "Adres",
+		Name:       "Test",       // Müşteri adı
+		TcknVkn:    "1234567890", // TCKN / VKN
+		IsPersonal: true,         // Bireysel / Kurumsal
+		TaxOffice:  "Maslak",     // Vergi dairesi
+		Country:    "Türkiye",    // Ülke
+		City:       "İstanbul",   // Şehir
+		District:   "Kadıkoy",    // İlçe
+		Address:    "No:1",       // Adres
 	}
 
 	if res, err := api.CreateFirm(ctx, customer); err == nil {
