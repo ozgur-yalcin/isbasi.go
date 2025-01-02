@@ -36,6 +36,66 @@ type LoginResponse struct {
 	Data    LoginRequest `json:"data,omitempty"`
 }
 
+type Customer struct {
+	Code      string `json:"code,omitempty"`
+	Name      string `json:"name,omitempty"`
+	Email     string `json:"email,omitempty"`
+	TcknVkn   string `json:"tcknVkn,omitempty"`
+	TaxOffice string `json:"taxOffice,omitempty"`
+	Country   string `json:"country,omitempty"`
+	City      string `json:"city,omitempty"`
+	District  string `json:"district,omitempty"`
+	Address   string `json:"address,omitempty"`
+	IsPerson  bool   `json:"isPerson,omitempty"`
+	FirstName string `json:"firstName,omitempty"`
+	LastName  string `json:"lastName,omitempty"`
+}
+
+type ShipmentAgent struct {
+	Name       string `json:"name,omitempty"`
+	SurName    string `json:"surName,omitempty"`
+	Identifier string `json:"identifier,omitempty"`
+	FirmType   int    `json:"firmType,omitempty"`
+}
+
+type EGovernmentInvoice struct {
+	EGovernmentType        int    `json:"eGovernmentType,omitempty"`
+	InvoiceTypeForEinvoice int    `json:"invoiceTypeForEinvoice,omitempty"`
+	EInvoiceProfile        int    `json:"eInvoiceProfile,omitempty"`
+	EArchivePaymentType    int    `json:"eArchivePaymentType,omitempty"`
+	EArchivePaymentDate    string `json:"eArchivePaymentDate,omitempty"`
+	EArchivePaymentAgent   string `json:"eArchivePaymentAgent,omitempty"`
+	Website                string `json:"website,omitempty"`
+}
+
+type EArchivePortalInvoice struct {
+	IsEArchive       bool `json:"isEArchive,omitempty"`
+	DispatchIncluded bool `json:"dispatchIncluded,omitempty"`
+	EGovernmentType  int  `json:"eGovernmentType,omitempty"`
+}
+
+type ProductDetail struct {
+	ItemCode    string      `json:"itemCode,omitempty"`
+	ItemType    int         `json:"itemType,omitempty"`
+	Name        string      `json:"name,omitempty"`
+	Vat         float64     `json:"vat,omitempty"`
+	Unit        string      `json:"unit,omitempty"`
+	Withholding Withholding `json:"withholding,omitempty"`
+}
+
+type SalesInvoiceDetail struct {
+	Quantity         float64       `json:"quantity,omitempty"`
+	TaxRate          float64       `json:"taxRate,omitempty"`
+	Name             string        `json:"name,omitempty"`
+	Price            float64       `json:"price,omitempty"`
+	DiscountRate     float64       `json:"discountRate,omitempty"`
+	DiscountValue    float64       `json:"discountValue,omitempty"`
+	StoppageRate     float64       `json:"stoppageRate,omitempty"`
+	VatExemptionCode string        `json:"vatExemptionCode,omitempty"`
+	Description      string        `json:"description,omitempty"`
+	ProductDetail    ProductDetail `json:"productDetail,omitempty"`
+}
+
 type Category struct {
 	ID   int    `json:"id,omitempty"`
 	Name string `json:"name,omitempty"`
@@ -240,18 +300,21 @@ type FirmRequest struct {
 }
 
 type InvoiceRequest struct {
-	ID           int       `json:"id,omitempty"`
-	Type         string    `json:"type,omitempty"`
-	Number       string    `json:"number,omitempty"`
-	Date         time.Time `json:"date,omitempty"`
-	CustomerID   int       `json:"customerId,omitempty"`
-	CustomerName string    `json:"customerName,omitempty"`
-	Currency     string    `json:"currency,omitempty"`
-	ExchangeRate float64   `json:"exchangeRate,omitempty"`
-	Total        float64   `json:"total,omitempty"`
-	VatAmount    float64   `json:"vatAmount,omitempty"`
-	Description  string    `json:"description,omitempty"`
-	IsCancelled  bool      `json:"isCancelled,omitempty"`
+	InvoiceID                int                   `json:"invoiceId,omitempty"`
+	Customer                 Customer              `json:"customer,omitempty"`
+	InvoiceDate              string                `json:"invoiceDate,omitempty"`
+	Currency                 string                `json:"currency,omitempty"`
+	ExchangeRate             float64               `json:"exchangeRate,omitempty"`
+	Description              string                `json:"description,omitempty"`
+	CategoryName             string                `json:"categoryName,omitempty"`
+	DeliveryAddressDifferent bool                  `json:"deliveryAddressDifferent,omitempty"`
+	VatIncluded              bool                  `json:"vatIncluded,omitempty"`
+	ShippingAddress          ShippingAddress       `json:"shippingAddress,omitempty"`
+	SendingDate              string                `json:"sendingDate,omitempty"`
+	ShipmentAgentItem        ShipmentAgent         `json:"shipmentAgentItem,omitempty"`
+	EGovernmentInvoice       EGovernmentInvoice    `json:"eGovernmentInvoice,omitempty"`
+	EArchivePortalInvoice    EArchivePortalInvoice `json:"eArchivePortalInvoice,omitempty"`
+	SalesInvoiceDetails      []SalesInvoiceDetail  `json:"salesInvoiceDetails,omitempty"`
 }
 
 type ProductRequest struct {
