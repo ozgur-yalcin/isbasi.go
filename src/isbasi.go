@@ -36,30 +36,137 @@ type LoginResponse struct {
 	Data    LoginRequest `json:"data,omitempty"`
 }
 
-type FirmRequest struct {
-	ID              int      `json:"id,omitempty"`
-	Code            string   `json:"code,omitempty"`
-	IsActive        bool     `json:"isActive,omitempty"`
-	Name            string   `json:"name,omitempty"`
-	TaxOrPersonalID string   `json:"taxOrPersonalId,omitempty"`
-	TaxOffice       string   `json:"taxOffice,omitempty"`
-	Country         string   `json:"country,omitempty"`
-	City            string   `json:"city,omitempty"`
-	District        string   `json:"district,omitempty"`
-	Address         string   `json:"address,omitempty"`
-	Phone           string   `json:"phone,omitempty"`
-	EmailAddress    string   `json:"emailAddress,omitempty"`
-	FirmType        int      `json:"firmType,omitempty"`
-	Currency        string   `json:"currency,omitempty"`
-	Balance         float64  `json:"balance,omitempty"`
-	Tags            []string `json:"tags,omitempty"`
+type Category struct {
+	ID   int    `json:"id,omitempty"`
+	Name string `json:"name,omitempty"`
+	Code string `json:"code,omitempty"`
+	Type int    `json:"type,omitempty"`
 }
 
-type FirmResponse struct {
-	Code    int         `json:"code,omitempty"`
-	Message string      `json:"message,omitempty"`
-	IsError bool        `json:"isError,omitempty"`
-	Data    FirmRequest `json:"data,omitempty"`
+type Employee struct {
+	FullName string `json:"fullName,omitempty"`
+	Email    string `json:"email,omitempty"`
+}
+
+type ShippingAddress struct {
+	ID       int    `json:"id,omitempty"`
+	FirmID   int    `json:"firmid,omitempty"`
+	Title    string `json:"title,omitempty"`
+	Address  string `json:"address,omitempty"`
+	Country  string `json:"country,omitempty"`
+	City     string `json:"city,omitempty"`
+	District string `json:"district,omitempty"`
+	Code     string `json:"code,omitempty"`
+	FullName string `json:"fullName,omitempty"`
+	Phone    string `json:"phone,omitempty"`
+}
+
+type Bank struct {
+	Name          string `json:"name,omitempty"`
+	Branch        string `json:"branch,omitempty"`
+	BranchCode    string `json:"branchCode,omitempty"`
+	AccountNumber string `json:"accountNumber,omitempty"`
+	Currency      string `json:"currency,omitempty"`
+	IBAN          string `json:"iban,omitempty"`
+}
+
+type BankAccount struct {
+	BankID      int    `json:"bankId,omitempty"`
+	AccountID   int    `json:"accountId,omitempty"`
+	AccountCode string `json:"accountCode,omitempty"`
+	Name        string `json:"name,omitempty"`
+	IBAN        string `json:"iban,omitempty"`
+	Currency    string `json:"currency,omitempty"`
+	BankName    string `json:"bankName,omitempty"`
+	BranchName  string `json:"branchName,omitempty"`
+}
+
+type EPortalLogin struct {
+	UserID   string `json:"userId,omitempty"`
+	Password string `json:"password,omitempty"`
+}
+
+type FirmRequest struct {
+	ID                                   int               `json:"id,omitempty"`
+	Code                                 string            `json:"code,omitempty"`
+	IsActive                             bool              `json:"isActive,omitempty"`
+	IsPersonalCompany                    bool              `json:"isPersonalCompany,omitempty"`
+	Name                                 string            `json:"name,omitempty"`
+	FirstName                            string            `json:"firstName,omitempty"`
+	LastName                             string            `json:"lastName,omitempty"`
+	FullName                             string            `json:"fullName,omitempty"`
+	DisplayName                          string            `json:"displayName,omitempty"`
+	TaxOrPersonalID                      string            `json:"taxOrPersonalId,omitempty"`
+	TaxOffice                            string            `json:"taxOffice,omitempty"`
+	Country                              string            `json:"country,omitempty"`
+	City                                 string            `json:"city,omitempty"`
+	ValidateCityAndDistrict              bool              `json:"validateCityAndDistrict,omitempty"`
+	District                             string            `json:"district,omitempty"`
+	PostalCode                           string            `json:"postalCode,omitempty"`
+	Address                              string            `json:"address,omitempty"`
+	Phone                                string            `json:"phone,omitempty"`
+	WebAddress                           string            `json:"webAddress,omitempty"`
+	Tags                                 []string          `json:"tags,omitempty"`
+	Category                             Category          `json:"category,omitempty"`
+	PhoneNumbers                         []string          `json:"phoneNumbers,omitempty"`
+	EmailAddress                         string            `json:"emailAddress,omitempty"`
+	Employees                            []Employee        `json:"employees,omitempty"`
+	ShippingAddresses                    []ShippingAddress `json:"shippingAddresses,omitempty"`
+	Banks                                []Bank            `json:"banks,omitempty"`
+	FaxNumber                            string            `json:"faxNumber,omitempty"`
+	Icon                                 string            `json:"icon,omitempty"`
+	UserID                               string            `json:"UserId,omitempty"`
+	EInvoiceResponsible                  bool              `json:"eInvoiceResponsible,omitempty"`
+	DefaultReportTemplate                string            `json:"defaultReportTemplate,omitempty"`
+	FirmType                             int               `json:"firmType,omitempty"`
+	EInvoiceProfile                      int               `json:"eInvoiceProfile,omitempty"`
+	EInvoiceSenderLabel                  string            `json:"eInvoiceSenderLabel,omitempty"`
+	EInvoicePostLabel                    string            `json:"eInvoicePostLabel,omitempty"`
+	ELogoUserName                        string            `json:"eLogoUserName,omitempty"`
+	ELogoPassword                        string            `json:"eLogoPassword,omitempty"`
+	NaceCode                             string            `json:"naceCode,omitempty"`
+	EInvoiceControlType                  int               `json:"eInvoiceControlType,omitempty"`
+	EInvoiceCustoms                      bool              `json:"eInvoiceCustoms,omitempty"`
+	EInvoiceBrokerComp                   int               `json:"eInvoiceBrokerComp,omitempty"`
+	EArchiveResponsible                  bool              `json:"eArchiveResponsible,omitempty"`
+	EArchiveWebSite                      string            `json:"eArchiveWebSite,omitempty"`
+	AdditionalInvoiceType                int               `json:"additionalInvoiceType,omitempty"`
+	SgkResponsibleCode                   string            `json:"sgkResponsibleCode,omitempty"`
+	SgkResponsibleName                   string            `json:"sgkResponsibleName,omitempty"`
+	EArchiveSendMod                      int               `json:"eArchiveSendMod,omitempty"`
+	EGovermentType                       int               `json:"eGovermentType,omitempty"`
+	ESmmResponsible                      bool              `json:"eSmmResponsible,omitempty"`
+	ESmmSendMod                          int               `json:"eSmmSendMod,omitempty"`
+	AcceptEinvPublic                     int               `json:"acceptEinvPublic,omitempty"`
+	GenericCustomer                      bool              `json:"genericCustomer,omitempty"`
+	NotApplyVat                          bool              `json:"notApplyVat,omitempty"`
+	NotApplyWithHolding                  bool              `json:"notApplyWithHolding,omitempty"`
+	NotApplyAdditionalTax                bool              `json:"notApplyAdditionalTax,omitempty"`
+	MersisNo                             string            `json:"mersisNo,omitempty"`
+	TradeRegisterNumber                  string            `json:"tradeRegisterNumber,omitempty"`
+	PredefinedDescription                string            `json:"predefinedDescription,omitempty"`
+	IsAdmin                              bool              `json:"isAdmin,omitempty"`
+	IsCharteredAccountant                bool              `json:"isCharteredAccountant,omitempty"`
+	ErrorMessage                         string            `json:"errorMessage,omitempty"`
+	BeginningBalance                     float64           `json:"beginningBalance,omitempty"`
+	BeginningBalanceDate                 time.Time         `json:"beginningBalanceDate,omitempty"`
+	Balance                              float64           `json:"balance,omitempty"`
+	CurrencyBalance                      float64           `json:"currencyBalance,omitempty"`
+	CostMethodID                         int               `json:"costMethodId,omitempty"`
+	Currency                             string            `json:"currency,omitempty"`
+	Description                          string            `json:"description,omitempty"`
+	EInvoiceBeginDate                    time.Time         `json:"eInvoiceBeginDate,omitempty"`
+	EArchiveBeginDate                    time.Time         `json:"eArchiveBeginDate,omitempty"`
+	IsSendDispatchInEInvoice             bool              `json:"isSendDispatchInEInvoice,omitempty"`
+	SenderIbanBankAccountID              int               `json:"senderIbanBankAccountId,omitempty"`
+	PurchaseServicesReceiptReadingMethod int               `json:"purchaseServicesReceiptReadingMethod,omitempty"`
+	WasAccessPermissionGranted           bool              `json:"wasAccessPermissionGranted,omitempty"`
+	BankAccount                          BankAccount       `json:"bankAccount,omitempty"`
+	ParentTenantSetDate                  time.Time         `json:"parentTenantSetDate,omitempty"`
+	IsIntegrationFirm                    bool              `json:"isIntegrationFirm,omitempty"`
+	HasApiAuthAuthority                  bool              `json:"hasApiAuthAuthority,omitempty"`
+	EPortalArchiveResponsible            bool              `json:"ePortalArchiveResponsible,omitempty"`
+	EAPortalLoginInformation             EPortalLogin      `json:"eAPortalLoginInformation,omitempty"`
 }
 
 type InvoiceRequest struct {
@@ -77,13 +184,6 @@ type InvoiceRequest struct {
 	IsCancelled  bool      `json:"isCancelled,omitempty"`
 }
 
-type InvoiceResponse struct {
-	Code    int            `json:"code,omitempty"`
-	Message string         `json:"message,omitempty"`
-	IsError bool           `json:"isError,omitempty"`
-	Data    InvoiceRequest `json:"data,omitempty"`
-}
-
 type ProductRequest struct {
 	ID       int     `json:"id,omitempty"`
 	Code     string  `json:"code,omitempty"`
@@ -91,6 +191,20 @@ type ProductRequest struct {
 	Type     int     `json:"type,omitempty"`
 	VatRate  float64 `json:"vatRate,omitempty"`
 	IsActive bool    `json:"isActive,omitempty"`
+}
+
+type FirmResponse struct {
+	Code    int         `json:"code,omitempty"`
+	Message string      `json:"message,omitempty"`
+	IsError bool        `json:"isError,omitempty"`
+	Data    FirmRequest `json:"data,omitempty"`
+}
+
+type InvoiceResponse struct {
+	Code    int            `json:"code,omitempty"`
+	Message string         `json:"message,omitempty"`
+	IsError bool           `json:"isError,omitempty"`
+	Data    InvoiceRequest `json:"data,omitempty"`
 }
 
 type ProductResponse struct {
